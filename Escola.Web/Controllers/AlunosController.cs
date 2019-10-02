@@ -73,7 +73,7 @@ namespace DiegoEscola.Web.Controllers
                 catch (Exception ex)
                 {
                     ViewBag.Retorno = ex.Message;
-                    return View();
+                    return View(aluno);
                 }
             }
             return View(aluno);
@@ -114,7 +114,7 @@ namespace DiegoEscola.Web.Controllers
             {
                 try
                 {
-                    if (aluno.Validar(this._context.Aluno))
+                    if (aluno.Validar(this._context.Aluno.Where(a => a.IdAluno != aluno.IdAluno)))
                     {
                         _context.Update(aluno);
                         await _context.SaveChangesAsync();

@@ -37,8 +37,8 @@ namespace DiegoEscola.Web.Models
         public bool AlunoExistente(IEnumerable<Aluno> alunos)
         {
             if (alunos.Where(a => a.NomeAluno == this.NomeAluno && a.IdAluno != this.IdAluno).Count() > 0)
-                return false;
-            return true;
+                return true;
+            return false;
         }
         public bool Validar(IEnumerable<Aluno> alunos)
         {
