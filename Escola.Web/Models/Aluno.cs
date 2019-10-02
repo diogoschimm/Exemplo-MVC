@@ -34,5 +34,21 @@ namespace DiegoEscola.Web.Models
 
             return true;
         }
+        public bool AlunoExistente(IEnumerable<Aluno> alunos)
+        {
+            if (alunos.Where(a => a.NomeAluno == this.NomeAluno && a.IdAluno != this.IdAluno).Count() > 0)
+                return false;
+            return true;
+        }
+        public bool Validar(IEnumerable<Aluno> alunos)
+        {
+            if (this.AlunoExistente(alunos))
+                throw new Exception("Aluno já existe, informe outro nome");
+
+            if (!this.EhMaiorIdade())
+                throw new Exception("Aluno é menor de idade");
+
+            return true;
+        }
     }
 }

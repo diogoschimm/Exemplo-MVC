@@ -61,30 +61,19 @@ namespace DiegoEscola.Web.Controllers
             ViewData["IdEscola"] = new SelectList(_context.Escola, "IdEscola", "NomeEscola", aluno.IdEscola);
             if (ModelState.IsValid)
             {
-                bool isErro = false;
-                string msg = "";
-                if (_context.Aluno.Where(x => x.NomeAluno == aluno.NomeAluno).Count() > 0)
+                try
                 {
-                    isErro = true;
-                    msg = "Já existe um aluno com este nome";
+                    if (aluno.Validar(this._context.Aluno))
+                    {
+                        _context.Add(aluno);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
                 }
-
-                if (!aluno.EhMaiorIdade())
+                catch (Exception ex)
                 {
-                    isErro = true;
-                    msg = "Aluno menor que 18 anos";
-                }
-
-                if (isErro)
-                {
-                    ViewBag.Retorno = msg;
+                    ViewBag.Retorno = ex.Message;
                     return View();
-                }
-                else
-                {
-                    _context.Add(aluno);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
                 }
             }
             return View(aluno);
@@ -125,27 +114,7 @@ namespace DiegoEscola.Web.Controllers
             {
                 try
                 {
-
-                    bool isErro = false;
-                    string msg = "";
-                    if (_context.Aluno.Where(x => x.NomeAluno == aluno.NomeAluno && x.IdAluno != aluno.IdAluno).Count() > 0)
-                    {
-                        isErro = true;
-                        msg = "Já existe um aluno com este nome";
-                    }
-
-                    if (!aluno.EhMaiorIdade())
-                    {
-                        isErro = true;
-                        msg = "Aluno menor que 18 anos";
-                    }
-
-                    if (isErro)
-                    {
-                        ViewBag.Retorno = msg;
-                        return View();
-                    }
-                    else
+                    if (aluno.Validar(this._context.Aluno))
                     {
                         _context.Update(aluno);
                         await _context.SaveChangesAsync();
@@ -154,14 +123,15 @@ namespace DiegoEscola.Web.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!AlunoExists(aluno.IdAluno))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
+                catch (Exception ex)
+                {
+                    ViewBag.Retorno = ex.Message;
+                    return View(aluno);
+                } 
                 return RedirectToAction(nameof(Index));
             }
             return View(aluno);
