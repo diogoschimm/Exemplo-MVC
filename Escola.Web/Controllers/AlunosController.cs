@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DiegoEscola.Web.Models;
+using EscolaDRS.Web.Models;
 
-namespace DiegoEscola.Web.Controllers
+namespace EscolaDRS.Web.Controllers
 {
     public class AlunosController : Controller
     {

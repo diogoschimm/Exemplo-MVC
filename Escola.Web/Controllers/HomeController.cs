@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DiegoEscola.Web.Models;
+using EscolaDRS.Web.Models;
 
-namespace DiegoEscola.Web.Controllers
+namespace EscolaDRS.Web.Controllers
 {
     public class HomeController : Controller
     {

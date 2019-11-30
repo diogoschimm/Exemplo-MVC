@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DiegoEscola.Web.Models;
+using EscolaDRS.Web.Models;
 
-namespace DiegoEscola.Web.Controllers
+namespace EscolaDRS.Web.Controllers
 {
     public class EscolasController : Controller
     {
@@ -53,7 +53,7 @@ namespace DiegoEscola.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEscola,NomeEscola")] Escola escola)
+        public async Task<IActionResult> Create([Bind("IdEscola,NomeEscola")] Models.Escola escola)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace DiegoEscola.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEscola,NomeEscola")] Escola escola)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEscola,NomeEscola")] Models.Escola escola)
         {
             if (id != escola.IdEscola)
             {

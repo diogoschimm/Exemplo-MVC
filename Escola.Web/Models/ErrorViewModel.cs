@@ -1,6 +1,6 @@
 using System;
 
-namespace DiegoEscola.Web.Models
+namespace EscolaDRS.Web.Models
 {
     public class ErrorViewModel
     {

@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using DiegoEscola.Web.Models;
+using EscolaDRS.Web.Models;
 
-namespace DiegoEscola.Web
+namespace EscolaDRS.Web
 {
     public class Startup
     {

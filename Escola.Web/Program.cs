@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace DiegoEscola.Web
+namespace EscolaDRS.Web
 {
     public class Program
     {
