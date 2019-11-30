@@ -2,6 +2,26 @@
 
 Uma aplicação simples utilizando MVC C# Asp.net Core com Entity Framework
 
+## Script do Banco de Dados (SQL Server)
+
+```sql
+
+  CREATE TABLE Aluno (
+    idAluno int primary key identity(1,1),
+    nomeAluno varchar(100),
+    dataNascimento datetime,
+    idEscola int
+  )
+  CREATE TABLE Escola (
+    idEscola int primary key identity(1,1),
+    nomeEscola varchar(100)
+  )
+
+  ALTER TABLE Aluno ADD CONSTRAINT FK_Aluno_Escola
+  FOREIGN KEY (idEscola) REFERENCES Escola (idEscola)
+  
+```
+
 ## Context do Entity Framework
 
 ```c#
