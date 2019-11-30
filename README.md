@@ -10,9 +10,9 @@ Uma aplicação simples utilizando MVC C# Asp.net Core com Entity Framework
   using System.Linq;
   using System.Threading.Tasks;
   using Microsoft.EntityFrameworkCore;
-  using DiegoEscola.Web.Models;
+  using EscolaDRS.Web.Models;
 
-  namespace DiegoEscola.Web.Models
+  namespace EscolaDRS.Web.Models
   {
       public class ProjetoContext : DbContext
       {
